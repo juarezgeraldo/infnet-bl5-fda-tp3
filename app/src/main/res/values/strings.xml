@@ -5,4 +5,5 @@
     <string name="textView_hint_nome">Nome</string>
     <string name="textView_botao_iniciar">INICIAR ANÁLISE</string>
     <string name="textView_rodape">Questionário para análise de crédito - Banco do Povo: www.bancodopovo.com.br/questionario</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
