@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacao"
+    app:startDestination="@id/perguntasActivity">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.example.perfilinvestidor.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <activity
+        android:id="@+id/perguntasActivity"
+        android:name="com.example.perfilinvestidor.PerguntasActivity"
+        android:label="activity_perguntas"
+        tools:layout="@layout/activity_perguntas" />
+<!--    <fragment-->
+<!--        android:id="@+id/perguntasFragment"-->
+<!--        android:name="com.example.perfilinvestidor.PerguntasFragment"-->
+<!--        android:label="fragment_perguntas"-->
+<!--        tools:layout="@layout/fragment_perguntas" />-->
+    <fragment
+        android:id="@+id/pergunta1Fragment"
+        android:name="com.example.perfilinvestidor.Pergunta1Fragment"
+        android:label="fragment_pergunta1"
+        tools:layout="@layout/fragment_pergunta1" >
+        <action
+            android:id="@+id/pergunta1Fragment"
+            app:destination="@id/pergunta2Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pergunta2Fragment"
+        android:name="com.example.perfilinvestidor.Pergunta2Fragment"
+        android:label="fragment_pergunta2"
+        tools:layout="@layout/fragment_pergunta2" >
+        <action
+            android:id="@+id/pergunta2Fragment"
+            app:destination="@id/resultadoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/resultadoFragment"
+        android:name="com.example.perfilinvestidor.ResultadoFragment"
+        android:label="fragment_resultado"
+        tools:layout="@layout/fragment_resultado" >
+    </fragment>
+</navigation>

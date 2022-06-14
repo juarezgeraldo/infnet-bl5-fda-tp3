@@ -7,8 +7,8 @@
     <data>
 
         <variable
-            name="perguntasFragment"
-            type="com.example.perfilinvestidor.PerguntasFragment" />
+            name="pergunta1Fragment"
+            type="com.example.perfilinvestidor.Pergunta1Fragment" />
     </data>
 
     <LinearLayout
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:onClick="@{() -> perguntasFragment.mostraPergunta(1)}"
+            android:onClick="@{() -> pergunta1Fragment.goToNextScreen()}"
             android:text="Próxima questão"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

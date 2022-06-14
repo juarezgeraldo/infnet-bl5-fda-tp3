@@ -1,20 +1,22 @@
 package com.example.perfilinvestidor
 
-import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.perfilinvestidor.dados.perguntas
-import com.example.perfilinvestidor.databinding.FragmentPerguntasBinding
+import com.example.perfilinvestidor.databinding.FragmentPergunta2Binding
 
-class PerguntasFragment : Fragment() {
-    private var binding: FragmentPerguntasBinding? = null
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
+class Pergunta2Fragment : Fragment() {
+    private var binding: FragmentPergunta2Binding? = null
     private val sharedViewModel: OrderViewModel by activityViewModels()
-
 
     private lateinit var textView_Pergunta: TextView
     private lateinit var radioButton: RadioGroup
@@ -25,32 +27,29 @@ class PerguntasFragment : Fragment() {
     private lateinit var rdbOpcao5: RadioButton
     private lateinit var btnProxima: Button
 
-
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val fragmentBinding = FragmentPerguntasBinding.inflate(inflater, container, false)
+    ): View? {
+        val fragmentBinding = FragmentPergunta2Binding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
-
-//            val view: View = inflater.inflate(R.layout.fragment_perguntas, container, false)
-//
-//        val bundle = arguments
-//        val indice = bundle?.getInt("indice")
-//
-//        return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.perguntasFragment = this
+        binding?.pergunta2Fragment = this
+
+        mostraPergunta(2)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    fun goToNextScreen() {
+        findNavController().navigate(R.id.resultadoFragment)
     }
 
     fun mostraPergunta(indice: Int){
@@ -94,4 +93,5 @@ class PerguntasFragment : Fragment() {
         }
 
     }
+
 }

@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
                 val perguntaIntent = Intent(this, PerguntasActivity::class.java)
                 perguntaIntent.putExtra("nome", txtNome.toString())
                 startActivity(perguntaIntent)
+
             }
         }
     }

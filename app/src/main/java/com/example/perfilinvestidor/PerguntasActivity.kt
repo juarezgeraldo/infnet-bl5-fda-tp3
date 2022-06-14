@@ -1,37 +1,39 @@
 package com.example.perfilinvestidor
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.os.bundleOf
-import com.example.perfilinvestidor.dados.perguntas
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.perfilinvestidor.modelos.Pergunta
-import kotlin.properties.Delegates
 
-class PerguntasActivity : AppCompatActivity() {
+class PerguntasActivity : AppCompatActivity(R.layout.activity_perguntas) {
 
     private lateinit var perguntasActivity: PerguntasFragment
     private lateinit var pergunta: Pergunta
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_perguntas)
 
-        perguntasActivity = PerguntasFragment()
+        val navHostFragment = supportFragmentManager
+            .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        val navController = navHostFragment.navController
 
-        setFragment(perguntasActivity, 0 )
-//        for (item in 0..1) {
-//            var indice = item
-//        }
+        // Set up the action bar for use with the NavController
+        setupActionBarWithNavController(navController)
+
+
+//        perguntasActivity = PerguntasFragment()
+//        setFragment(perguntasActivity, 0 )
     }
-    private fun setFragment(fragment: PerguntasFragment, indice: Int){
-        val mBundle = Bundle()
-        val mFragmentTransaction = supportFragmentManager.beginTransaction()
-        val mFragment = PerguntasFragment()
-
-        mBundle.putInt("indice",indice)
-        mFragment.arguments = mBundle
-
-        mFragmentTransaction.add(R.id.fragmentContainerView, mFragment).commit()
-
-    }
+//    private fun setFragment(fragment: PerguntasFragment, indice: Int){
+//        val mBundle = Bundle()
+//        val mFragmentTransaction = supportFragmentManager.beginTransaction()
+//        val mFragment = PerguntasFragment()
+//
+//        mBundle.putInt("indice",indice)
+//        mFragment.arguments = mBundle
+//
+//        mFragmentTransaction.add(R.id.fragmentContainerView, mFragment).commit()
+//
+//    }
 }
