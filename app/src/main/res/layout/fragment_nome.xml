@@ -5,7 +5,6 @@
     tools:context=".NomeFragment">
 
     <data>
-
         <variable
             name="nomeFragment"
             type="com.example.perfilinvestidor.NomeFragment" />

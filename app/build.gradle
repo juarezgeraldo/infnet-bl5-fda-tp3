@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.perfilinvestidor"
-        minSdk 26
+        minSdk 27
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -54,6 +54,4 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-savedstate:2.4.1'
-
-
 }
