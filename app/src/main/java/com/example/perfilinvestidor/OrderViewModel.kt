@@ -49,4 +49,8 @@ class OrderViewModel: ViewModel() {
         _totalPontos.value = pontos + 1
     }
 
+    fun registraNome(nome: String){
+        _nome.value = nome
+    }
+
 }
