@@ -1,15 +1,22 @@
 package com.example.perfilinvestidor
 
+import android.view.View
+import android.widget.RadioButton
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class OrderViewModel: ViewModel() {
+class OrderViewModel : ViewModel() {
+
+    private val _opcaoResposta = MutableLiveData<Int>()
+    val opcaoResposta: LiveData<Int> = _opcaoResposta
+
     private val _nome = MutableLiveData<String>()
     val nome: LiveData<String> = _nome
 
-    private val _respostas = mutableListOf<String>()
-    val respostas: List<String> = _respostas
+    private val _respostas = mutableListOf<Int>()
+    val respostas: List<Int> = _respostas
 
     private val _respostasQuestao = mutableListOf<Int>()
     val respostasQuestao: List<Int> = _respostasQuestao
@@ -26,6 +33,7 @@ class OrderViewModel: ViewModel() {
     init {
         limpaValores()
     }
+
     fun limpaValores() {
         _nome.value = ""
 //        _respostas = emptyList<String>()
@@ -34,23 +42,36 @@ class OrderViewModel: ViewModel() {
         _numeroQuestao.value = 1
     }
 
-    fun adicionaNumeroQuestao(numeroQuestao: Int){
-        _numeroQuestao.value = numeroQuestao + 1
-    }
-
-    fun registraResposta(numeroQuestao: Int, resposta: String, respostaPonto: Int){
+    fun registraResposta(numeroQuestao: Int, resposta: Int, respostaPonto: Int) {
         _respostasQuestao.add(numeroQuestao)
         _respostas.add(resposta)
         _respostasPontos.add(respostaPonto)
         adicionaPontos(respostaPonto)
+        _opcaoResposta.value = null
     }
 
-    fun adicionaPontos(pontos: Int){
+    fun adicionaPontos(pontos: Int) {
         _totalPontos.value = pontos + 1
     }
 
-    fun registraNome(nome: String){
+    fun registraNome(nome: String) {
         _nome.value = nome
     }
+
+    fun opcaoResposta(): Int? {
+        return if(_opcaoResposta.value == null) 0 else _opcaoResposta.value
+    }
+
+    fun setOpcaoResposta(opcao: Int) {
+        _opcaoResposta.value = opcao
+    }
+
+    fun getTotalPontos(): Int? {
+        return _totalPontos.value
+    }
+    fun getNome(): String? {
+        return _nome.value
+    }
+
 
 }

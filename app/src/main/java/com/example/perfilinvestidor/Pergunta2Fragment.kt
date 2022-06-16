@@ -10,22 +10,13 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.perfilinvestidor.dados.perguntas
 import com.example.perfilinvestidor.databinding.FragmentPergunta2Binding
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import com.example.perfilinvestidor.utils.Utils
+import kotlinx.android.synthetic.main.fragment_pergunta1.*
 
 class Pergunta2Fragment : Fragment() {
     private var binding: FragmentPergunta2Binding? = null
     private val sharedViewModel: OrderViewModel by activityViewModels()
-
-    private lateinit var textView_Pergunta: TextView
-    private lateinit var radioButton: RadioGroup
-    private lateinit var rdbOpcao1: RadioButton
-    private lateinit var rdbOpcao2: RadioButton
-    private lateinit var rdbOpcao3: RadioButton
-    private lateinit var rdbOpcao4: RadioButton
-    private lateinit var rdbOpcao5: RadioButton
-    private lateinit var btnProxima: Button
+    private val utils: Utils = Utils()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,9 +29,13 @@ class Pergunta2Fragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding?.pergunta2Fragment = this
+        binding?.apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = sharedViewModel
+            pergunta2Fragment = this@Pergunta2Fragment
 
-        mostraPergunta(2)
+            utils.carregaPergunta(view,1)
+        }
     }
 
     override fun onDestroyView() {
@@ -49,49 +44,24 @@ class Pergunta2Fragment : Fragment() {
     }
 
     fun goToNextScreen() {
-        findNavController().navigate(R.id.resultadoFragment)
-    }
-
-    fun mostraPergunta(indice: Int){
-        if (indice != null) {
-            textView_Pergunta = view!!.findViewById(R.id.textView_Pergunta)
-            radioButton = view!!.findViewById(R.id.radioGroup)
-            rdbOpcao1 = view!!.findViewById(R.id.rdbOpcao1)
-            rdbOpcao2 = view!!.findViewById(R.id.rdbOpcao2)
-            rdbOpcao3 = view!!.findViewById(R.id.rdbOpcao3)
-            rdbOpcao4 = view!!.findViewById(R.id.rdbOpcao4)
-            rdbOpcao5 = view!!.findViewById(R.id.rdbOpcao5)
-            btnProxima = view!!.findViewById(R.id.btnProxima)
-
-            rdbOpcao1.visibility = View.VISIBLE
-            rdbOpcao2.visibility = View.VISIBLE
-            rdbOpcao3.visibility = View.VISIBLE
-            rdbOpcao4.visibility = View.VISIBLE
-            rdbOpcao5.visibility = View.INVISIBLE
-
-            val opcoesView = listOf(rdbOpcao1,
-                rdbOpcao2,
-                rdbOpcao3,
-                rdbOpcao4,
-                rdbOpcao5)
-
-            textView_Pergunta.text = perguntas[indice].pergunta.toString()
-
-            for (i in 0..perguntas[indice].opcao.size - 1){
-                opcoesView[i].text =  perguntas[indice].opcao[i].opcao.toString()
-            }
-            btnProxima.setOnClickListener {
-                if (!radioButton.isSelected) {
-                    Toast.makeText(
-                        context,
-                        "Selecione uma das opções antes de prosseguir.",
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
-            }
-
+        if (respostaSelecionada(1)!! > 0) {
+            findNavController().navigate(R.id.resultadoFragment)
+        }else{
+            Toast.makeText(context, "Informe qual opção melhor se adequa a sua realidade.", Toast.LENGTH_LONG).show()
         }
-
     }
 
+    fun respostaSelecionada(indice: Int): Int? {
+        val opcaoResposta: Int? = sharedViewModel.opcaoResposta()
+        if (opcaoResposta != 0) {
+            if (opcaoResposta != null) {
+                sharedViewModel.registraResposta(
+                    indice,
+                    opcaoResposta,
+                    perguntas[indice].opcao[opcaoResposta - 1].pontuacao
+                )
+            }
+        }
+        return opcaoResposta
+    }
 }

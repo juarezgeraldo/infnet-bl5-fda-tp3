@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/nomeFragment"
         android:name="com.example.perfilinvestidor.NomeFragment"
-        android:label="fragment_nome"
+        android:label="Perfil Investidor"
         tools:layout="@layout/fragment_nome">
         <action
             android:id="@+id/nomeFragment_to_pergunta1Fragment"
@@ -17,7 +17,7 @@
     <fragment
         android:id="@+id/pergunta1Fragment"
         android:name="com.example.perfilinvestidor.Pergunta1Fragment"
-        android:label="fragment_pergunta1"
+        android:label="Perfil Investidor"
         tools:layout="@layout/fragment_pergunta1">
         <action
             android:id="@+id/pergunta1Fragment_to_pergunta2Fragment"
@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/pergunta2Fragment"
         android:name="com.example.perfilinvestidor.Pergunta2Fragment"
-        android:label="fragment_pergunta2"
+        android:label="Perfil Investidor"
         tools:layout="@layout/fragment_pergunta2">
         <action
             android:id="@+id/pergunta2Fragment_to_resultadoFragment"
@@ -35,6 +35,6 @@
     <fragment
         android:id="@+id/resultadoFragment"
         android:name="com.example.perfilinvestidor.ResultadoFragment"
-        android:label="fragment_resultado"
+        android:label="Perfil Investidor"
         tools:layout="@layout/fragment_resultado" />
 </navigation>

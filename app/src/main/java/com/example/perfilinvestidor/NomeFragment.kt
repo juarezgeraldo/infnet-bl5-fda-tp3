@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import com.example.perfilinvestidor.databinding.FragmentNomeBinding
 
 class NomeFragment : Fragment() {
@@ -36,7 +38,11 @@ class NomeFragment : Fragment() {
 
     fun registraNome(){
         textView_nome = view!!.findViewById(R.id.txtNome)
-
-        sharedViewModel.registraNome(textView_nome.toString())
+        if(textView_nome.text != null || textView_nome.text != "") {
+            sharedViewModel.registraNome(textView_nome.text.toString())
+            findNavController().navigate(R.id.nomeFragment_to_pergunta1Fragment)
+        }else{
+            Toast.makeText(context, "Informe seu nome para prosseguir na avalição de perfil.", Toast.LENGTH_LONG).show()
+        }
     }
 }
