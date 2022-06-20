@@ -17,7 +17,6 @@ val perguntas = listOf(
                                 "moderados", 2),
                         Opcao("Aumento do capital acima da taxa de retorno média do mercado, mesmo " +
                                 "que isso implique assumir riscos de perdas elevadas", 4),
-                        Opcao("xxxxxxxxxxxxxxx", 4),
                         Opcao("Obter no curto prazo retornos elevados e significativamente acima da taxa " +
                                 "de retorno média do mercado, assumindo riscos elevados", 5)))
 )

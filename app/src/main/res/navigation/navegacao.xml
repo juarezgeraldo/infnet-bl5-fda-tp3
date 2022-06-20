@@ -11,17 +11,20 @@
         android:label="Perfil Investidor"
         tools:layout="@layout/fragment_nome">
         <action
-            android:id="@+id/nomeFragment_to_pergunta1Fragment"
-            app:destination="@id/pergunta1Fragment" />
+            android:id="@+id/nomeFragment_to_perguntaFragment"
+            app:destination="@id/perguntaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/pergunta1Fragment"
+        android:id="@+id/perguntaFragment"
         android:name="com.example.perfilinvestidor.Pergunta1Fragment"
         android:label="Perfil Investidor"
         tools:layout="@layout/fragment_pergunta1">
         <action
-            android:id="@+id/pergunta1Fragment_to_pergunta2Fragment"
-            app:destination="@id/pergunta2Fragment" />
+            android:id="@+id/perguntaFragment_to_perguntaFragment"
+            app:destination="@id/perguntaFragment" />
+        <action
+            android:id="@+id/perguntaFragment_to_resultadoFragment"
+            app:destination="@id/resultadoFragment" />
     </fragment>
     <fragment
         android:id="@+id/pergunta2Fragment"

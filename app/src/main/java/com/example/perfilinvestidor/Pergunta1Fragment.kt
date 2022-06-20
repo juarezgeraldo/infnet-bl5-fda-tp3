@@ -35,7 +35,7 @@ class Pergunta1Fragment : Fragment() {
             viewModel = sharedViewModel
             pergunta1Fragment = this@Pergunta1Fragment
 
-            utils.carregaPergunta(view,0)
+            sharedViewModel.getIndice()?.let { utils.carregaPergunta(view, it) }
         }
     }
 
@@ -45,8 +45,13 @@ class Pergunta1Fragment : Fragment() {
     }
 
     fun goToNextScreen() {
-        if (respostaSelecionada(0)!! > 0) {
-            findNavController().navigate(R.id.pergunta1Fragment_to_pergunta2Fragment)
+        val indice = sharedViewModel.getIndice()
+        if (indice?.let { respostaSelecionada(it) }!! != null) {
+            if (indice < 1) {
+                findNavController().navigate(R.id.perguntaFragment_to_perguntaFragment)
+            }else{
+                findNavController().navigate(R.id.resultadoFragment)
+            }
         }else{
             Toast.makeText(context, "Informe qual opção melhor se adequa a sua realidade.", Toast.LENGTH_LONG).show()
         }

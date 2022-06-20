@@ -40,7 +40,7 @@ class NomeFragment : Fragment() {
         textView_nome = view!!.findViewById(R.id.txtNome)
         if(textView_nome.text != null || textView_nome.text != "") {
             sharedViewModel.registraNome(textView_nome.text.toString())
-            findNavController().navigate(R.id.nomeFragment_to_pergunta1Fragment)
+            findNavController().navigate(R.id.nomeFragment_to_perguntaFragment)
         }else{
             Toast.makeText(context, "Informe seu nome para prosseguir na avalição de perfil.", Toast.LENGTH_LONG).show()
         }

@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModel
 
 class OrderViewModel : ViewModel() {
 
+    private val _indice = MutableLiveData<Int>()
+    val indice: LiveData<Int> = _indice
+
     private val _opcaoResposta = MutableLiveData<Int>()
     val opcaoResposta: LiveData<Int> = _opcaoResposta
 
@@ -47,6 +50,7 @@ class OrderViewModel : ViewModel() {
         _respostas.add(resposta)
         _respostasPontos.add(respostaPonto)
         adicionaPontos(respostaPonto)
+        incrementaIndice()
         _opcaoResposta.value = null
     }
 
@@ -56,6 +60,7 @@ class OrderViewModel : ViewModel() {
 
     fun registraNome(nome: String) {
         _nome.value = nome
+        setIndice(0)
     }
 
     fun opcaoResposta(): Int? {
@@ -71,6 +76,18 @@ class OrderViewModel : ViewModel() {
     }
     fun getNome(): String? {
         return _nome.value
+    }
+
+    fun getIndice(): Int? {
+        return _indice.value
+    }
+
+    fun setIndice(indiceInformado: Int) {
+        _indice.value = indiceInformado
+    }
+
+    fun incrementaIndice() {
+        _indice.value = _indice.value?.plus(1)
     }
 
 
