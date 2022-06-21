@@ -4,8 +4,6 @@ import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.TextView
-import androidx.fragment.app.activityViewModels
-import com.example.perfilinvestidor.OrderViewModel
 import com.example.perfilinvestidor.R
 import com.example.perfilinvestidor.dados.perguntas
 
@@ -48,5 +46,8 @@ class Utils {
             opcoesView[i].text = perguntas[indice].opcao[i].opcao.toString()
             opcoesView[i].visibility = View.VISIBLE
         }
+    }
+    fun getQtdPerguntas(): Int{
+        return perguntas.size
     }
 }

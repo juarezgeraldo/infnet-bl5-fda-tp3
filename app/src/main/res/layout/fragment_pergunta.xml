@@ -2,15 +2,15 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".Pergunta2Fragment">
+    tools:context=".PerguntaFragment">
 
     <data>
         <variable
             name="viewModel"
             type="com.example.perfilinvestidor.OrderViewModel" />
         <variable
-            name="pergunta2Fragment"
-            type="com.example.perfilinvestidor.Pergunta2Fragment" />
+            name="perguntaFragment"
+            type="com.example.perfilinvestidor.PerguntaFragment" />
     </data>
 
     <LinearLayout
@@ -18,8 +18,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:orientation="vertical"
-        android:text="Pergunta 1"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:tag="layout/fragment_pergunta_0"
+        android:text="Pergunta">
 
         <TextView
             android:id="@+id/textView_Pergunta"
@@ -28,7 +29,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
             android:text="Pergunta"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,45 +46,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Opção1"
                 android:checked="@{viewModel.opcaoResposta.equals(1)}"
-                android:onClick="@{() -> viewModel.setOpcaoResposta(1)}" />
+                android:onClick="@{() -> viewModel.setOpcaoResposta(1)}"
+                android:text="Opção1" />
 
             <RadioButton
                 android:id="@+id/rdbOpcao2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Opção2"
                 android:checked="@{viewModel.opcaoResposta.equals(2)}"
-                android:onClick="@{() -> viewModel.setOpcaoResposta(2)}" />
+                android:onClick="@{() -> viewModel.setOpcaoResposta(2)}"
+                android:text="Opção2" />
 
             <RadioButton
                 android:id="@+id/rdbOpcao3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Opção3"
                 android:checked="@{viewModel.opcaoResposta.equals(3)}"
-                android:onClick="@{() -> viewModel.setOpcaoResposta(3)}" />
+                android:onClick="@{() -> viewModel.setOpcaoResposta(3)}"
+                android:text="Opção3" />
 
             <RadioButton
                 android:id="@+id/rdbOpcao4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Opção4"
                 android:checked="@{viewModel.opcaoResposta.equals(4)}"
-                android:onClick="@{() -> viewModel.setOpcaoResposta(4)}" />
+                android:onClick="@{() -> viewModel.setOpcaoResposta(4)}"
+                android:text="Opção4" />
 
             <RadioButton
                 android:id="@+id/rdbOpcao5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="6dp"
-                android:text="Opção5"
                 android:checked="@{viewModel.opcaoResposta.equals(5)}"
-                android:onClick="@{() -> viewModel.setOpcaoResposta(5)}" />
+                android:onClick="@{() -> viewModel.setOpcaoResposta(5)}"
+                android:text="Opção5" />
+
         </RadioGroup>
 
         <Button
@@ -92,10 +94,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:onClick="@{() -> pergunta2Fragment.goToNextScreen()}"
+            android:onClick="@{() -> perguntaFragment.goToNextScreen()}"
             android:text="Próxima questão"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
     </LinearLayout>
 </layout>

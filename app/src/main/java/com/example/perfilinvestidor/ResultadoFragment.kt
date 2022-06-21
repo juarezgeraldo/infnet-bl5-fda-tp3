@@ -8,15 +8,14 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.example.perfilinvestidor.databinding.FragmentResultadoBinding
-import com.example.perfilinvestidor.utils.Utils
+import kotlinx.android.synthetic.main.fragment_nome.*
 
 class ResultadoFragment : Fragment() {
     private var binding: FragmentResultadoBinding? = null
     private val sharedViewModel: OrderViewModel by activityViewModels()
-    private val utils: Utils = Utils()
 
-    private lateinit var textView_nome: TextView
-    private lateinit var textView_pontos: TextView
+    private lateinit var textView_nomeInvestidor: TextView
+    private lateinit var textView_perfil: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,11 +33,11 @@ class ResultadoFragment : Fragment() {
             viewModel = sharedViewModel
             resultadoFragment = this@ResultadoFragment
 
-            textView_nome = view!!.findViewById(R.id.editTextNome)
-            textView_pontos = view.findViewById(R.id.editTextTotalPontos)
+            textView_nomeInvestidor = view!!.findViewById(R.id.txtNomeInvestidor)
+            textView_perfil = view.findViewById(R.id.txtPerfil)
 
-            textView_nome.text = sharedViewModel.getTotalPontos().toString()
-            textView_pontos.text = sharedViewModel.getNome()
+            txtNomeInvestidor.text = sharedViewModel.getNome().toString()
+            txtPerfil.text = sharedViewModel.retornaPerfil()
 
         }
     }

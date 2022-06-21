@@ -16,23 +16,14 @@
     </fragment>
     <fragment
         android:id="@+id/perguntaFragment"
-        android:name="com.example.perfilinvestidor.Pergunta1Fragment"
+        android:name="com.example.perfilinvestidor.PerguntaFragment"
         android:label="Perfil Investidor"
-        tools:layout="@layout/fragment_pergunta1">
+        tools:layout="@layout/fragment_pergunta">
         <action
             android:id="@+id/perguntaFragment_to_perguntaFragment"
             app:destination="@id/perguntaFragment" />
         <action
             android:id="@+id/perguntaFragment_to_resultadoFragment"
-            app:destination="@id/resultadoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/pergunta2Fragment"
-        android:name="com.example.perfilinvestidor.Pergunta2Fragment"
-        android:label="Perfil Investidor"
-        tools:layout="@layout/fragment_pergunta2">
-        <action
-            android:id="@+id/pergunta2Fragment_to_resultadoFragment"
             app:destination="@id/resultadoFragment" />
     </fragment>
     <fragment

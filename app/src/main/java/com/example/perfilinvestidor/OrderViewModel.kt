@@ -1,8 +1,5 @@
 package com.example.perfilinvestidor
 
-import android.view.View
-import android.widget.RadioButton
-import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -39,8 +36,6 @@ class OrderViewModel : ViewModel() {
 
     fun limpaValores() {
         _nome.value = ""
-//        _respostas = emptyList<String>()
-//        _respostasPontos.value = arrayListOf()
         _totalPontos.value = 0
         _numeroQuestao.value = 1
     }
@@ -55,7 +50,7 @@ class OrderViewModel : ViewModel() {
     }
 
     fun adicionaPontos(pontos: Int) {
-        _totalPontos.value = pontos + 1
+        _totalPontos.value = _totalPontos.value?.plus(pontos)
     }
 
     fun registraNome(nome: String) {
@@ -71,9 +66,14 @@ class OrderViewModel : ViewModel() {
         _opcaoResposta.value = opcao
     }
 
-    fun getTotalPontos(): Int? {
-        return _totalPontos.value
+    fun retornaPerfil(): String? {
+        return when (_totalPontos.value){
+          in 0..12 -> "Investidor: Conservador"
+          in 13..29 -> "Investidor: Moderado"
+          else -> "Investidor: Arrojado"
+        }
     }
+
     fun getNome(): String? {
         return _nome.value
     }

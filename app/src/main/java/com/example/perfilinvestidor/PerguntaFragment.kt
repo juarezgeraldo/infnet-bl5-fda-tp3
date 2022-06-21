@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.example.perfilinvestidor.dados.perguntas
-import com.example.perfilinvestidor.databinding.FragmentPergunta1Binding
+import com.example.perfilinvestidor.databinding.FragmentPerguntaBinding
 import com.example.perfilinvestidor.utils.Utils
-import kotlinx.android.synthetic.main.fragment_pergunta1.*
-import kotlin.properties.Delegates
 
-class Pergunta1Fragment : Fragment() {
-    private var binding: FragmentPergunta1Binding? = null
+class PerguntaFragment : Fragment() {
+    private var binding: FragmentPerguntaBinding? = null
     private val sharedViewModel: OrderViewModel by activityViewModels()
     private val utils: Utils = Utils()
 
@@ -23,7 +21,7 @@ class Pergunta1Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val fragmentBinding = FragmentPergunta1Binding.inflate(inflater, container, false)
+        val fragmentBinding = FragmentPerguntaBinding.inflate(inflater, container, false)
         binding = fragmentBinding
         return fragmentBinding.root
     }
@@ -33,7 +31,7 @@ class Pergunta1Fragment : Fragment() {
         binding?.apply {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
-            pergunta1Fragment = this@Pergunta1Fragment
+            perguntaFragment = this@PerguntaFragment
 
             sharedViewModel.getIndice()?.let { utils.carregaPergunta(view, it) }
         }
@@ -44,10 +42,11 @@ class Pergunta1Fragment : Fragment() {
         binding = null
     }
 
+
     fun goToNextScreen() {
         val indice = sharedViewModel.getIndice()
-        if (indice?.let { respostaSelecionada(it) }!! != null) {
-            if (indice < 1) {
+        if (indice?.let { respostaSelecionada(it) }!! != 0) {
+            if (indice < utils.getQtdPerguntas() - 1) {
                 findNavController().navigate(R.id.perguntaFragment_to_perguntaFragment)
             }else{
                 findNavController().navigate(R.id.resultadoFragment)
