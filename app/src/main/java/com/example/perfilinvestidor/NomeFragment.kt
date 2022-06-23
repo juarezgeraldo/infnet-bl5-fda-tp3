@@ -38,7 +38,7 @@ class NomeFragment : Fragment() {
 
     fun registraNome(){
         textView_nome = view!!.findViewById(R.id.txtNome)
-        if(textView_nome.text != null || textView_nome.text != "") {
+        if(textView_nome.text.isNotEmpty()) {
             sharedViewModel.registraNome(textView_nome.text.toString())
             findNavController().navigate(R.id.nomeFragment_to_perguntaFragment)
         }else{
